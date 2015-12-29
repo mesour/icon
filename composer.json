@@ -1,0 +1,21 @@
+{
+  "name": "mesour/icon",
+  "description": "Mesour Icon component.",
+  "license": ["BSD-3-Clause","GPL-3.0"],
+  "keywords": ["icon","component"],
+  "homepage": "http://components.mesour.com/component/icon",
+  "authors": [{
+      "name": "Matouš Němec",
+      "homepage": "http://mesour.com"
+  }],
+  "require": {
+      "php": ">=5.5.0",
+      "mesour/components": "dev-master"
+  },
+  "require-dev": {
+      "tracy/tracy": "~2.3.0"
+  },
+  "autoload": {
+      "classmap": ["src/"]
+  }
+}
