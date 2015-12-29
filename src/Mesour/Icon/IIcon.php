@@ -23,6 +23,10 @@ interface IIcon extends Mesour\Components\Control\IAttributesControl
 
     public function setPrefix($prefix);
 
+    public function getPrefix();
+
+    public function getType();
+
     /**
      * @return Mesour\Components\Utils\Html
      */

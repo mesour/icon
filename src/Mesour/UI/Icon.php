@@ -32,6 +32,15 @@ class Icon extends Mesour\Components\Control\AttributesControl implements Mesour
 
     protected $inRendering = FALSE;
 
+    public function __construct($name = NULL, Mesour\Components\ComponentModel\IContainer $parent = NULL)
+    {
+        parent::__construct($name, $parent);
+
+        $this->setHtmlElement(
+            Mesour\Components\Utils\Html::el($this->getOption(self::WRAPPER, 'el'))
+        );
+    }
+
     public function setType($type)
     {
         if (!is_string($type) && strlen($type) <= 0) {
@@ -50,14 +59,22 @@ class Icon extends Mesour\Components\Control\AttributesControl implements Mesour
         return $this;
     }
 
+    public function getPrefix()
+    {
+        return $this->prefix;
+    }
+
+    public function getType()
+    {
+        return $this->type;
+    }
+
     /**
      * @return Mesour\Components\Utils\Html
      */
     public function getControlPrototype()
     {
-        return $this->getHtmlElement() ? $this->getHtmlElement() : $this->setHtmlElement(
-            Mesour\Components\Utils\Html::el($this->getOption(self::WRAPPER, 'el'))
-        );
+        return $this->getHtmlElement();
     }
 
     /**
