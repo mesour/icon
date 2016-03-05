@@ -17,15 +17,15 @@ use Mesour;
 interface IIcon extends Mesour\Components\Control\IAttributesControl
 {
 
-    const WRAPPER = 'wrapper';
+	const WRAPPER = 'wrapper';
 
-    public function setType($type);
+	public function setType($type);
 
-    public function setPrefix($prefix);
+	public function setPrefix($prefix);
 
-    /**
-     * @return Mesour\Components\Utils\Html
-     */
-    public function getControlPrototype();
+	/**
+	 * @return Mesour\Components\Utils\Html
+	 */
+	public function getControlPrototype();
 
 }

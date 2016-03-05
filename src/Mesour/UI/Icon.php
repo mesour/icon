@@ -17,87 +17,87 @@ use Mesour;
 class Icon extends Mesour\Components\Control\AttributesControl implements Mesour\Icon\IIcon
 {
 
-    protected $defaults = [
-        self::WRAPPER => [
-            'el' => 'span',
-            'attributes' => [
-                'class' => ''
-            ]
-        ],
-    ];
+	protected $defaults = [
+		self::WRAPPER => [
+			'el' => 'span',
+			'attributes' => [
+				'class' => '',
+			],
+		],
+	];
 
-    protected $prefix = 'fa fa-';
+	protected $prefix = 'fa fa-';
 
-    protected $type = 'cog';
+	protected $type = 'cog';
 
-    protected $inRendering = FALSE;
+	protected $inRendering = false;
 
-    public function setType($type)
-    {
-        if (!is_string($type) && strlen($type) <= 0) {
-            throw new Mesour\InvalidArgumentException('Type must be non empty string.');
-        }
-        $this->type = $type;
-        return $this;
-    }
+	public function setType($type)
+	{
+		if (!is_string($type) && strlen($type) <= 0) {
+			throw new Mesour\InvalidArgumentException('Type must be non empty string.');
+		}
+		$this->type = $type;
+		return $this;
+	}
 
-    public function setPrefix($prefix)
-    {
-        if (!is_string($prefix)) {
-            throw new Mesour\InvalidArgumentException('Prefix must be string.');
-        }
-        $this->prefix = $prefix;
-        return $this;
-    }
+	public function setPrefix($prefix)
+	{
+		if (!is_string($prefix)) {
+			throw new Mesour\InvalidArgumentException('Prefix must be string.');
+		}
+		$this->prefix = $prefix;
+		return $this;
+	}
 
-    /**
-     * @return Mesour\Components\Utils\Html
-     */
-    public function getControlPrototype()
-    {
-        return $this->getHtmlElement() ? $this->getHtmlElement() : $this->setHtmlElement(
-            Mesour\Components\Utils\Html::el($this->getOption(self::WRAPPER, 'el'))
-        );
-    }
+	/**
+	 * @return Mesour\Components\Utils\Html
+	 */
+	public function getControlPrototype()
+	{
+		return $this->getHtmlElement() ? $this->getHtmlElement() : $this->setHtmlElement(
+			Mesour\Components\Utils\Html::el($this->getOption(self::WRAPPER, 'el'))
+		);
+	}
 
-    /**
-     * @param $key
-     * @param $value
-     * @param bool|FALSE $append
-     * @param bool|FALSE $translated
-     * @return $this
-     */
-    public function setAttribute($key, $value, $append = FALSE, $translated = FALSE)
-    {
-        if ($key === 'class' && !$this->inRendering) {
-            throw new Mesour\NotSupportedException(
-                'Can not set class directly. Use methods setType and setPrefix for specify class name.'
-            );
-        }
-        parent::setAttribute($key, $value, $append, $translated);
-    }
+	/**
+	 * @param $key
+	 * @param $value
+	 * @param bool|FALSE $append
+	 * @param bool|FALSE $translated
+	 * @return $this
+	 */
+	public function setAttribute($key, $value, $append = false, $translated = false)
+	{
+		if ($key === 'class' && !$this->inRendering) {
+			throw new Mesour\NotSupportedException(
+				'Can not set class directly. Use methods setType and setPrefix for specify class name.'
+			);
+		}
+		parent::setAttribute($key, $value, $append, $translated);
+	}
 
-    public function create()
-    {
-        $wrapper = $this->getControlPrototype();
-        $oldWrapper = clone $wrapper;
+	public function create()
+	{
+		$wrapper = $this->getControlPrototype();
+		$oldWrapper = clone $wrapper;
 
-        $this->inRendering = TRUE;
+		$this->inRendering = true;
 
-        $this->setAttribute('class', $this->formatClassName());
+		$this->setAttribute('class', $this->formatClassName());
 
-        $this->getAttributes();
+		$this->getAttributes();
 
-        $this->inRendering = FALSE;
+		$this->inRendering = false;
 
-        $this->setHtmlElement($oldWrapper);
+		$this->setHtmlElement($oldWrapper);
 
-        return $wrapper;
-    }
+		return $wrapper;
+	}
 
-    protected function formatClassName()
-    {
-        return $this->prefix . $this->type;
-    }
+	protected function formatClassName()
+	{
+		return $this->prefix . $this->type;
+	}
 
 }
