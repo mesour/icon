@@ -2,3 +2,7 @@
 /vendor
 /composer.lock
 /examples/log
+/tests/log
+/tests/tmp
+/tests/environment.php
+/tests/config.local.php
