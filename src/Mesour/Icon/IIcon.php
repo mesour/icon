@@ -12,7 +12,7 @@ namespace Mesour\Icon;
 use Mesour;
 
 /**
- * @author Matouš Němec <matous.nemec@mesour.com>
+ * @author Matouš Němec (http://mesour.com)
  */
 interface IIcon extends Mesour\Components\Control\IAttributesControl
 {
