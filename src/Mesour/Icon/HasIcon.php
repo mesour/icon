@@ -73,7 +73,7 @@ trait HasIcon
 		if ($parent instanceof IHasIcon) {
 			return $parent->getIconClass();
 		} else {
-			return $this->iconClass = Mesour\UI\Icon::class;
+			$this->iconClass = Mesour\UI\Icon::class;
 		}
 		return $this->iconClass;
 	}
